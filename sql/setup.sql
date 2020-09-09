@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS pizzas;
 DROP TABLE IF EXISTS games;
 DROP TABLE IF EXISTS sandwiches;
 DROP TABLE IF EXISTS fish;
+DROP TABLE IF EXISTS players;
 
 
 CREATE TABLE pizzas (
@@ -29,5 +30,12 @@ CREATE TABLE fish (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     color TEXT NOT NULL,
+    weight INT CHECK (weight > 0)
+);
+
+CREATE TABLE players (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    ppg INT NOT NULL,
     weight INT CHECK (weight > 0)
 );
