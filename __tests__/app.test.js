@@ -20,5 +20,25 @@ describe('postgres-lab routes', () => {
     color: 'pink',
     weight: 15
   });
-});
+
+  
+  });
+
+  it('deletes a fish by id via DELETE', async() => {
+    const createdFish = await Fish.insert({
+      name: 'Swordfish',
+      color: 'blue',
+      weight: 105
+    });
+
+    const response = await request(app)
+      .delete(`/api/v1/fish/${createdFish.id}`);
+
+    expect(response.body).toEqual({
+      id: createdFish.id,
+      name: 'Swordfish',
+      color: 'blue',
+      weight: 105
+    });
+  });
 });
